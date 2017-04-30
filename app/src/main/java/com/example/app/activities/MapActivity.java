@@ -32,10 +32,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
-
 
         LatLng sydney = new LatLng(-33.852, 151.211);
         googleMap.addMarker(new MarkerOptions().position(sydney)
