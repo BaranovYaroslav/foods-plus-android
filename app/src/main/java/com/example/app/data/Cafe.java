@@ -8,17 +8,24 @@ public class Cafe implements Serializable{
 
     private String description;
 
-    private double middlePrice;
+    private double middleCost;
 
     private String address;
 
+    private String type;
+
+    private double x;
+
+    private double y;
+
     public Cafe() {}
 
-    public Cafe(String name, String description, double middlePrice, String address) {
+    public Cafe(String name, String description, double middleCost, String address, String type) {
         this.name = name;
         this.description = description;
-        this.middlePrice = middlePrice;
+        this.middleCost = middleCost;
         this.address = address;
+        this.type = type;
     }
 
     public String getName() {
@@ -37,12 +44,12 @@ public class Cafe implements Serializable{
         this.description = description;
     }
 
-    public double getMiddlePrice() {
-        return middlePrice;
+    public double getMiddleCost() {
+        return middleCost;
     }
 
-    public void setMiddlePrice(double middlePrice) {
-        this.middlePrice = middlePrice;
+    public void setMiddleCost(double middleCost) {
+        this.middleCost = middleCost;
     }
 
     public String getAddress() {
@@ -51,5 +58,29 @@ public class Cafe implements Serializable{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 }

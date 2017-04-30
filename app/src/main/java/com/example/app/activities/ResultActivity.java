@@ -3,11 +3,8 @@ package com.example.app.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -16,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.app.R;
 import com.example.app.data.Cafe;
 import com.example.app.data.CafeMock;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,12 +39,12 @@ public class ResultActivity extends Activity {
             ll.setOrientation(LinearLayout.VERTICAL);
             ll.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.cafes, null));
 
-            TextView info = new TextView(this);
-            String infoString = getIntent().getStringExtra("info");
-            info.setText(infoString);
-            ll.addView(info);
 
-            final List<Cafe> cafes = CafeMock.getCages();
+
+
+            ArrayList<Cafe> cafes = (ArrayList<Cafe>) getIntent().getSerializableExtra("cafes");
+
+
             for (int i = 0; i < cafes.size(); i++) {
                 LinearLayout cofee = new LinearLayout(this);
                 cofee.setMinimumHeight(300);
@@ -73,7 +70,7 @@ public class ResultActivity extends Activity {
                 name.setPadding(10, 10, 10, 10);
                 name.setText("Name: " + currentCafe.getName() + "\n"
                             + "Description: " + currentCafe.getDescription() + "\n"
-                            + "Middle price: " + currentCafe.getMiddlePrice() + "\n"
+                            + "Middle price: " + currentCafe.getMiddleCost() + "\n"
                             + "Address: " + currentCafe.getAddress());
                 cofee.addView(name);
                 LinearLayout.LayoutParams np = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
