@@ -42,14 +42,10 @@ public class ResultActivity extends Activity {
             ll.setOrientation(LinearLayout.VERTICAL);
             ll.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.cafes, null));
 
-
-
             TextView info = new TextView(this);
             String infoString = getIntent().getStringExtra("info");
             info.setText(infoString);
             ll.addView(info);
-
-
 
             final List<Cafe> cafes = CafeMock.getCages();
             for (int i = 0; i < cafes.size(); i++) {
