@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">App</string>
+
+    <string name="google_maps_api_key">AIzaSyCzAdOqfyRv6mS5Ttruhz_59_SdgwRZHjw</string>
+
+    <string name="btn_text">search</string>
+
+    <string name="min_sum">Enter minimal sum:</string>
+    <string name="max_sum">Enter maximal sum:</string>
+    <string name="select_advanced">Select advanced:</string>
+    <string name="consider_location">Consider my location</string>
+    <string name="meat">With meat</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="cakes">Cakes</string>
+    <string name="search">Search</string>
+
+    <string name="map">Show on map</string>
+</resources>
