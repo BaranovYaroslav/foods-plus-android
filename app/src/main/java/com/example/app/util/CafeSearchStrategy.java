@@ -12,9 +12,11 @@ public interface CafeSearchStrategy {
 
     double DEFAULT_MIN_COST = -1;
     double DEFAULT_MAX_COST = 1000000;
+    double DEFAULT_COORDINATE = 1000;
 
-    public void loadCafes(List<Cafe> cafes);
+    void loadCafes(List<Cafe> cafes);
 
-    public ArrayList<Cafe> search(double min, double max, String type, double x, double y);
+    ArrayList<Cafe> search(double min, double max, String type, boolean considerLocation,
+                                  double x, double y);
 }
 

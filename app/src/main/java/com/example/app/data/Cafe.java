@@ -20,12 +20,15 @@ public class Cafe implements Serializable{
 
     public Cafe() {}
 
-    public Cafe(String name, String description, double middleCost, String address, String type) {
+    public Cafe(String name, String description, double middleCost, String address, String type,
+                double x, double y) {
         this.name = name;
         this.description = description;
         this.middleCost = middleCost;
         this.address = address;
         this.type = type;
+        this.x = x;
+        this.y = y;
     }
 
     public String getName() {

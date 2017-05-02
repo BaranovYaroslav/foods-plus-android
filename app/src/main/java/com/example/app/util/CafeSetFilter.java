@@ -3,6 +3,7 @@ package com.example.app.util;
 import com.example.app.data.Cafe;
 import com.example.app.data.ModelConstants;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -53,7 +54,26 @@ public class CafeSetFilter {
         return this;
     }
 
-    public CafeSetFilter filterByLocation(double x, double y) {
+    public CafeSetFilter filterByLocation(boolean considerLocation, double x, double y) {
+        if(considerLocation && x != CafeSearchStrategy.DEFAULT_COORDINATE
+                            && y != CafeSearchStrategy.DEFAULT_COORDINATE) {
+            Cafe[] cafes = this.cafes.toArray(new Cafe[this.cafes.size()]);
+            for (int i = 0; i < cafes.length - 1; i++) {
+                for (int j = 1; j < cafes.length - i; j++) {
+                    if(calculateDistance(x, y, cafes[j - 1]) > calculateDistance(x, y, cafes[j])) {
+                        Cafe temp = cafes[j - 1];
+                        cafes[j - 1] = cafes[j];
+                        cafes[j] = temp;
+                    }
+                }
+            }
+            this.cafes = Arrays.asList(cafes);
+        }
+
         return this;
+    }
+
+    private double calculateDistance(double x, double y, Cafe cafe) {
+        return Math.sqrt(Math.pow(x - cafe.getX() ,2) + Math.pow(y - cafe.getY(), 2));
     }
 }

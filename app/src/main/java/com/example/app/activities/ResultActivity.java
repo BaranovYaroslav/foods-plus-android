@@ -40,10 +40,13 @@ public class ResultActivity extends Activity {
             ll.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.cafes, null));
 
 
+            TextView textView = new TextView(this);
+            String coord = getIntent().getStringExtra("c");
+            textView.setText(coord);
+            ll.addView(textView);
 
 
             ArrayList<Cafe> cafes = (ArrayList<Cafe>) getIntent().getSerializableExtra("cafes");
-
 
             for (int i = 0; i < cafes.size(); i++) {
                 LinearLayout cofee = new LinearLayout(this);
@@ -57,7 +60,6 @@ public class ResultActivity extends Activity {
                 cofee.setDividerDrawable(border);
 
                 cofee.setBackground(border);
-
 
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
                 lp.setMargins(40, 40, 40, 0);

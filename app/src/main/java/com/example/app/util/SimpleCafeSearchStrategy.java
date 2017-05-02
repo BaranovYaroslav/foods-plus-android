@@ -1,5 +1,7 @@
 package com.example.app.util;
 
+import android.app.Activity;
+
 import com.example.app.data.Cafe;
 
 import java.util.ArrayList;
@@ -21,10 +23,12 @@ public class SimpleCafeSearchStrategy implements CafeSearchStrategy {
     }
 
     @Override
-    public ArrayList<Cafe> search(double min, double max, String type, double x, double y) {
-        return new ArrayList<>(cafeSetFilter.filterBySum(min, max)
-                                            .filterByType(type)
-                                            .filterByLocation(x, y)
-                                            .getCafes());
+    public ArrayList<Cafe> search(double min, double max, String type, boolean considerLocation,
+                                  double x, double y) {
+        cafeSetFilter.filterBySum(min, max)
+                     .filterByType(type)
+                     .filterByLocation(considerLocation, x, y)
+                     .getCafes();
+        return new ArrayList<>(cafeSetFilter.getCafes());
     }
 }
