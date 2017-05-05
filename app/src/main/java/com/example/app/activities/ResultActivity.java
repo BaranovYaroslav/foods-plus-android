@@ -2,23 +2,19 @@ package com.example.app.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.app.R;
 import com.example.app.data.Cafe;
-import com.example.app.data.CafeMock;
+import com.example.app.data.ModelConstants;
+import com.example.app.data.db.DbHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +25,23 @@ public class ResultActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        DbHandler dbHandler = new DbHandler(this);
+        System.out.println("zzz Inserting");
+        for (int i = 0; i < 11; i++) {
+            dbHandler.addCafe(new Cafe("Cafe" + i, "good cafe", i*2, "Address",
+                    ModelConstants.DEFAULT_TYPE, i, i));
+        }
+
+
+        System.out.println("zzz Reading all cafes..");
+        List<Cafe> cafes = dbHandler.getAllCafes();
+        for (Cafe cafe : cafes) {
+            System.out.println("zzz " + cafe);
+        }
+
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.result_layout, null);
@@ -41,12 +54,11 @@ public class ResultActivity extends Activity {
 
 
             TextView textView = new TextView(this);
-            String coord = getIntent().getStringExtra("c");
-            textView.setText(coord);
+            textView.setText(cafes.size() + " ");
             ll.addView(textView);
 
 
-            ArrayList<Cafe> cafes = (ArrayList<Cafe>) getIntent().getSerializableExtra("cafes");
+            /*ArrayList<Cafe> cafes = (ArrayList<Cafe>) getIntent().getSerializableExtra("cafes");
 
             for (int i = 0; i < cafes.size(); i++) {
                 LinearLayout cofee = new LinearLayout(this);
@@ -89,7 +101,7 @@ public class ResultActivity extends Activity {
                         startActivity(intent);
                     }
                 });
-            }
+            }*/
             scrollView.addView(ll);
 
         setContentView(view);

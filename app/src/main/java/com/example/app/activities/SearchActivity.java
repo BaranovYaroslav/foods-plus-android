@@ -14,14 +14,13 @@ import android.widget.Switch;
 
 import com.example.app.R;
 import com.example.app.data.Cafe;
-import com.example.app.data.CafeMock;
+import com.example.app.data.db.CafeMock;
 import com.example.app.data.ModelConstants;
 import com.example.app.util.CafeSearchStrategy;
 import com.example.app.util.LocationExtractor;
 import com.example.app.util.SimpleCafeSearchStrategy;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ярослав on 06.04.2017.
@@ -85,7 +84,7 @@ public class SearchActivity extends Activity {
         });
 
         Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("cafes", getResult());
+        /*intent.putExtra("cafes", getResult());*/
 
         startActivity(intent);
     }

@@ -2,67 +2,76 @@
 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cfd2d8">
+    android:background="@drawable/search_background">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/min_sum"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textColor="#ffffff" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/minSum" />
+        android:id="@+id/minSum"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/max_sum"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:textColor="#ffffff" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/maxSum" />
+        android:id="@+id/maxSum"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/select_advanced"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView3"
+        android:textColor="#ffffff" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/isMeat"
-        android:text="@string/meat" />
+        android:text="@string/meat"
+        android:textColor="#ffffff" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/vegetarian"
-        android:id="@+id/isVegetarian" />
+        android:id="@+id/isVegetarian"
+        android:textColor="#ffffff" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cakes"
-        android:id="@+id/isCakes" />
+        android:id="@+id/isCakes"
+        android:textColor="#ffffff" />
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/consider_location"
         android:id="@+id/considerUserLocation"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,6 +79,8 @@
         android:text="@string/search"
         android:id="@+id/button2"
         android:layout_gravity="center_horizontal"
-        android:onClick="goToResult" />
+        android:onClick="goToResult"
+        android:background="@drawable/searchbutton"
+        android:textColor="#ffffff" />
 
 </RadioGroup>
