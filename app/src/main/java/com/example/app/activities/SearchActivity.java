@@ -16,6 +16,8 @@ import com.example.app.R;
 import com.example.app.data.Cafe;
 import com.example.app.data.db.CafeMock;
 import com.example.app.data.ModelConstants;
+import com.example.app.data.db.DbHandler;
+import com.example.app.data.db.IDbHandler;
 import com.example.app.util.CafeSearchStrategy;
 import com.example.app.util.LocationExtractor;
 import com.example.app.util.SimpleCafeSearchStrategy;
@@ -31,6 +33,8 @@ public class SearchActivity extends Activity {
 
     private CafeSearchStrategy cafeSearchStrategy;
 
+    private IDbHandler dbHandler;
+
     private EditText minSum;
     private EditText maxSum;
     private RadioButton isMeat;
@@ -43,9 +47,10 @@ public class SearchActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_layout);
 
-        cafeSearchStrategy = new SimpleCafeSearchStrategy();
         initializeSearchComponents();
 
+        cafeSearchStrategy = new SimpleCafeSearchStrategy();
+        dbHandler = new DbHandler(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
 
@@ -84,13 +89,13 @@ public class SearchActivity extends Activity {
         });
 
         Intent intent = new Intent(this, ResultActivity.class);
-        /*intent.putExtra("cafes", getResult());*/
+        intent.putExtra("cafes", getResult());
 
         startActivity(intent);
     }
 
     private ArrayList<Cafe> getResult() {
-        cafeSearchStrategy.loadCafes(CafeMock.getCafes());
+        cafeSearchStrategy.loadCafes(dbHandler.getAllCafes());
         return cafeSearchStrategy.search(getMinSum(), getMaxSum(), getType(),
                                          considerUserLocation.isChecked(),
                                          LocationExtractor.getLatitude(locationManager),

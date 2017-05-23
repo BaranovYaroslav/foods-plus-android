@@ -69,7 +69,7 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
     @Override
     public List<Cafe> getAllCafes() {
         List<Cafe> contactList = new ArrayList<Cafe>();
-        String selectQuery = "SELECT  * FROM " + TABLE_CAFES;
+        String selectQuery = "SELECT * FROM " + TABLE_CAFES;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -91,5 +91,10 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
 
         cursor.close();
         return contactList;
+    }
+
+    @Override
+    public void initializeDB() {
+
     }
 }

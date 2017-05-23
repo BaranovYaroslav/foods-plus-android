@@ -19,10 +19,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private double x;
+    private double y;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        initializeCoordinates();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -33,10 +38,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
 
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng position = new LatLng(x, y);
+        googleMap.addMarker(new MarkerOptions().position(position)
+                .title("Your cafe is there"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        googleMap.setMyLocationEnabled(true);
+    }
+
+    private void initializeCoordinates() {
+        x = getIntent().getDoubleExtra("x", 0);
+        y = getIntent().getDoubleExtra("y", 0);
     }
 }
