@@ -17,6 +17,7 @@
     <string name="description">Description:&#160;</string>
     <string name="middleCost">Middle cost:&#160;</string>
     <string name="address">Address:&#160;</string>
+    <string name="location">Coordinates:&#160;</string>
 
     <string name="map">Show on map</string>
 </resources>

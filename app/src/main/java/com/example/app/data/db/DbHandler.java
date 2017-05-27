@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.app.data.Cafe;
 import com.example.app.data.Coordinates;
@@ -93,22 +94,28 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
     }
 
     @Override
-    public void initializeDB() {
+    public List<Cafe> getAllWithCheckFromRemoteDb(){
+        List<Cafe> actualCafes = this.getAll();
+        List<Cafe> cafesFromRemote;
+        List<Cafe> cafesToAdd;
 
-    }
 
-    @Override
-    public void deleteCafe(Cafe cafe) {
+            IRemoteDbHandler dbHandler = new RemoteDbHandler();
 
-    }
+            cafesFromRemote = dbHandler.getAll();
+            cafesToAdd = new ArrayList<>();
 
-    @Override
-    public Cafe find(long id) {
-        return null;
-    }
+            for(Cafe cafe: cafesFromRemote) {
+                if(!actualCafes.contains(cafe)) {
+                    cafesToAdd.add(cafe);
+                }
+            }
 
-    @Override
-    public void update(Cafe cafe) {
+            for(Cafe cafe: cafesToAdd) {
+                actualCafes.add(cafe);
+                add(cafe);
+            }
 
+        return getAll();
     }
 }

@@ -1,9 +1,11 @@
 package com.example.app.data;
 
+import java.io.Serializable;
+
 /**
  * Created by Ярослав on 27.05.2017.
  */
-public class Coordinates {
+public class Coordinates implements Serializable{
 
     private double x;
 

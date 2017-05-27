@@ -10,13 +10,7 @@ import java.util.List;
 public interface IDbHandler {
     void add(Cafe cafe);
 
-    void deleteCafe(Cafe cafe);
-
-    void update(Cafe cafe);
-
-    Cafe find(long id);
-
     List<Cafe> getAll();
 
-    void initializeDB();
+    List<Cafe> getAllWithCheckFromRemoteDb();
 }

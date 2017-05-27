@@ -87,6 +87,24 @@ public class Cafe implements Serializable{
     }
 
     @Override
+    public int hashCode() {
+        return (int) id;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if(!(object instanceof Cafe)){
+            return false;
+        }
+        Cafe cafe = (Cafe) object;
+
+        return cafe.hashCode() == this.hashCode() &&
+               cafe.getId() == this.id &&
+               cafe.getName().equals(this.name) &&
+               cafe.getMiddleCost() == this.middleCost;
+    }
+
+    @Override
     public String toString() {
         return id + " " + name + " " + description + " " + type + " " + middleCost + " "
                   + address + " " + coordinates.getX() + " " + coordinates.getY();

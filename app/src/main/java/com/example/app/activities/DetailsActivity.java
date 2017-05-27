@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.example.app.R;
 import com.example.app.data.Cafe;
+import com.example.app.data.db.IRemoteDbHandler;
+import com.example.app.data.db.RemoteDbHandler;
 
 /**
  * Created by Ярослав on 09.04.2017.
@@ -19,6 +21,7 @@ public class DetailsActivity extends Activity {
     private TextView description;
     private TextView middleCost;
     private TextView address;
+    private TextView location;
 
     private double x;
     private double y;
@@ -33,10 +36,13 @@ public class DetailsActivity extends Activity {
     }
 
     public void addCafeToLayout(Cafe cafe) {
+        IRemoteDbHandler remoteDbHandler = new RemoteDbHandler();
+
         cafeName.setText(cafe.getName());
         description.append(cafe.getDescription());
         middleCost.append(String.valueOf(cafe.getMiddleCost()));
-        address.append(cafe.getAddress());
+        address.append(cafe.getAddress() + remoteDbHandler.getAll().size());
+        location.append(cafe.getCoordinates().getX() + " " + cafe.getCoordinates().getY());
 
         x = cafe.getCoordinates().getX();
         y = cafe.getCoordinates().getY();
@@ -54,5 +60,6 @@ public class DetailsActivity extends Activity {
         description = (TextView) findViewById(R.id.description);
         middleCost = (TextView) findViewById(R.id.middleCost);
         address = (TextView) findViewById(R.id.address);
+        location = (TextView) findViewById(R.id.location);
     }
 }

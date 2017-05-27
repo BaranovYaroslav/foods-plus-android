@@ -94,7 +94,7 @@ public class SearchActivity extends Activity {
     }
 
     private ArrayList<Cafe> getResult() {
-        cafeSearchStrategy.loadCafes(dbHandler.getAll());
+        cafeSearchStrategy.loadCafes(dbHandler.getAllWithCheckFromRemoteDb());
         return cafeSearchStrategy.search(getMinSum(), getMaxSum(), getType(),
                                          considerUserLocation.isChecked(),
                                          LocationExtractor.getLatitude(locationManager),

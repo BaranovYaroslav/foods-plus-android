@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/details_background">
+    android:background="@drawable/details">
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,13 +44,23 @@
         android:paddingRight="10dp"
         android:paddingBottom="20dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/location"
+        android:id="@+id/location"
+        android:paddingLeft="10dp"
+        android:paddingBottom="20dp" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/map"
         android:id="@+id/button3"
-        android:layout_gravity="bottom|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:onClick="showMap"
-        android:background="@drawable/mapbutton" />
+        android:background="@drawable/mapbutton"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

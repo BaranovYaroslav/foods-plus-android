@@ -7,5 +7,5 @@ public interface ModelConstants {
     String MEAT_TYPE = "meat";
     String VEGETARIAN_TYPE = "vegetarian";
     String CAKES_TYPE = "cakes";
-    String DEFAULT_TYPE = "all";
+    String DEFAULT_TYPE = "default";
 }
