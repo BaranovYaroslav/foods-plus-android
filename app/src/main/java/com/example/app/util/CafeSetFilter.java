@@ -74,6 +74,7 @@ public class CafeSetFilter {
     }
 
     private double calculateDistance(double x, double y, Cafe cafe) {
-        return Math.sqrt(Math.pow(x - cafe.getX() ,2) + Math.pow(y - cafe.getY(), 2));
+        return Math.sqrt(Math.pow(x - cafe.getCoordinates().getX() ,2) +
+                         Math.pow(y - cafe.getCoordinates().getY(), 2));
     }
 }

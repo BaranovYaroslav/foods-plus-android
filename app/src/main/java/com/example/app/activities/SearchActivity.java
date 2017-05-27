@@ -14,7 +14,6 @@ import android.widget.Switch;
 
 import com.example.app.R;
 import com.example.app.data.Cafe;
-import com.example.app.data.db.CafeMock;
 import com.example.app.data.ModelConstants;
 import com.example.app.data.db.DbHandler;
 import com.example.app.data.db.IDbHandler;
@@ -95,7 +94,7 @@ public class SearchActivity extends Activity {
     }
 
     private ArrayList<Cafe> getResult() {
-        cafeSearchStrategy.loadCafes(dbHandler.getAllCafes());
+        cafeSearchStrategy.loadCafes(dbHandler.getAll());
         return cafeSearchStrategy.search(getMinSum(), getMaxSum(), getType(),
                                          considerUserLocation.isChecked(),
                                          LocationExtractor.getLatitude(locationManager),

@@ -38,8 +38,8 @@ public class DetailsActivity extends Activity {
         middleCost.append(String.valueOf(cafe.getMiddleCost()));
         address.append(cafe.getAddress());
 
-        x = cafe.getX();
-        y = cafe.getY();
+        x = cafe.getCoordinates().getX();
+        y = cafe.getCoordinates().getY();
     }
 
     public void showMap(View view) {

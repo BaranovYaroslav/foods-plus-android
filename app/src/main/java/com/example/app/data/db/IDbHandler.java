@@ -8,7 +8,15 @@ import java.util.List;
  * Created by Ярослав on 05.05.2017.
  */
 public interface IDbHandler {
-    void addCafe(Cafe cafe);
-    List<Cafe> getAllCafes();
+    void add(Cafe cafe);
+
+    void deleteCafe(Cafe cafe);
+
+    void update(Cafe cafe);
+
+    Cafe find(long id);
+
+    List<Cafe> getAll();
+
     void initializeDB();
 }

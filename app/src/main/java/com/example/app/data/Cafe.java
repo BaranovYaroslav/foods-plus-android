@@ -16,21 +16,18 @@ public class Cafe implements Serializable{
 
     private String type;
 
-    private double x;
-
-    private double y;
+    private Coordinates coordinates;
 
     public Cafe() {}
 
     public Cafe(String name, String description, double middleCost, String address, String type,
-                double x, double y) {
+                Coordinates coordinates) {
         this.name = name;
         this.description = description;
         this.middleCost = middleCost;
         this.address = address;
         this.type = type;
-        this.x = x;
-        this.y = y;
+        this.coordinates = coordinates;
     }
 
     public long getId() {
@@ -81,25 +78,17 @@ public class Cafe implements Serializable{
         this.type = type;
     }
 
-    public double getX() {
-        return x;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
 
     @Override
     public String toString() {
         return id + " " + name + " " + description + " " + type + " " + middleCost + " "
-                  + address + " " + x + " " + y;
+                  + address + " " + coordinates.getX() + " " + coordinates.getY();
     }
 }

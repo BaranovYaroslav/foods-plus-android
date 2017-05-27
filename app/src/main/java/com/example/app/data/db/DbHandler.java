@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.app.data.Cafe;
+import com.example.app.data.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,6 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
     private static final String KEY_ADDRESS = "address";
     private static final String KEY_X = "x";
     private static final String KEY_Y = "y";
-
 
     public DbHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -51,7 +51,7 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
     }
 
     @Override
-    public void addCafe(Cafe cafe) {
+    public void add(Cafe cafe) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, cafe.getName());
@@ -59,15 +59,14 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
         values.put(KEY_TYPE, cafe.getType());
         values.put(KEY_MIDDLE_COST, cafe.getMiddleCost());
         values.put(KEY_ADDRESS, cafe.getAddress());
-        values.put(KEY_X, cafe.getX());
-        values.put(KEY_Y, cafe.getY());
-
+        values.put(KEY_X, cafe.getCoordinates().getX());
+        values.put(KEY_Y, cafe.getCoordinates().getY());
         db.insert(TABLE_CAFES, null, values);
         db.close();
     }
 
     @Override
-    public List<Cafe> getAllCafes() {
+    public List<Cafe> getAll() {
         List<Cafe> contactList = new ArrayList<Cafe>();
         String selectQuery = "SELECT * FROM " + TABLE_CAFES;
 
@@ -83,8 +82,8 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
                 cafe.setType(cursor.getString(3));
                 cafe.setMiddleCost(Double.parseDouble(cursor.getString(4)));
                 cafe.setAddress(cursor.getString(5));
-                cafe.setX(Double.parseDouble(cursor.getString(6)));
-                cafe.setY(Double.parseDouble(cursor.getString(7)));
+                cafe.setCoordinates(new Coordinates(Double.parseDouble(cursor.getString(6)),
+                                                    Double.parseDouble(cursor.getString(7))));
                 contactList.add(cafe);
             } while (cursor.moveToNext());
         }
@@ -95,6 +94,21 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
 
     @Override
     public void initializeDB() {
+
+    }
+
+    @Override
+    public void deleteCafe(Cafe cafe) {
+
+    }
+
+    @Override
+    public Cafe find(long id) {
+        return null;
+    }
+
+    @Override
+    public void update(Cafe cafe) {
 
     }
 }
