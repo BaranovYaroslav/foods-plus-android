@@ -93,15 +93,9 @@ public class Cafe implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        if(!(object instanceof Cafe)){
-            return false;
-        }
         Cafe cafe = (Cafe) object;
 
-        return cafe.hashCode() == this.hashCode() &&
-               cafe.getId() == this.id &&
-               cafe.getName().equals(this.name) &&
-               cafe.getMiddleCost() == this.middleCost;
+        return cafe.getId() == this.id;
     }
 
     @Override

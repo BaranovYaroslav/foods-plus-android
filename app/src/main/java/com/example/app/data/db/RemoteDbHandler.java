@@ -10,7 +10,6 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ярослав on 27.05.2017.
@@ -21,8 +20,9 @@ public class RemoteDbHandler implements IRemoteDbHandler{
     public ArrayList<Cafe> getAll() {
         ArrayList<Cafe> result = new ArrayList<>();
 
-        MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds155631.mlab.com:55631/course_work");
+        MongoClientURI uri = new MongoClientURI("mongodb://admin:admin@ds155631.mlab.com:55631/course_work?connectTimeoutMS=4000&socketTimeoutMS=4000");
         MongoClient mongoClient = new MongoClient(uri);
+
         MongoDatabase database = mongoClient.getDatabase("course_work");
         MongoCollection<Document> cafes = database.getCollection("cafes");
 
@@ -42,6 +42,4 @@ public class RemoteDbHandler implements IRemoteDbHandler{
         }
         return result;
     }
-
-
 }

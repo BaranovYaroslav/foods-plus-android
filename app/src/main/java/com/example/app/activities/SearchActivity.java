@@ -1,12 +1,15 @@
 package com.example.app.activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -65,32 +68,35 @@ public class SearchActivity extends Activity {
 
     public void goToResult(View view) {
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
 
-            }
+                }
 
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
+                @Override
+                public void onStatusChanged(String s, int i, Bundle bundle) {
 
-            }
+                }
 
-            @Override
-            public void onProviderEnabled(String s) {
+                @Override
+                public void onProviderEnabled(String s) {
 
-            }
+                }
 
-            @Override
-            public void onProviderDisabled(String s) {
+                @Override
+                public void onProviderDisabled(String s) {
 
-            }
-        });
+                }
+            });
 
-        Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("cafes", getResult());
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra("cafes", getResult());
 
-        startActivity(intent);
+            startActivity(intent);
+        }
+
     }
 
     private ArrayList<Cafe> getResult() {

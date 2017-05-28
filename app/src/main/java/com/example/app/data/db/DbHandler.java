@@ -98,8 +98,9 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
         List<Cafe> actualCafes = this.getAll();
         List<Cafe> cafesFromRemote;
         List<Cafe> cafesToAdd;
+        String test = "";
 
-
+        try {
             IRemoteDbHandler dbHandler = new RemoteDbHandler();
 
             cafesFromRemote = dbHandler.getAll();
@@ -112,10 +113,20 @@ public class DbHandler extends SQLiteOpenHelper implements IDbHandler {
             }
 
             for(Cafe cafe: cafesToAdd) {
-                actualCafes.add(cafe);
                 add(cafe);
             }
+        } catch (Exception e) {
+            Log.println(Log.ERROR, "Internet", "Can't connect to remote database server");
+            return getAll();
+        }
 
         return getAll();
     }
+
+    public void delete(Cafe cafe) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CAFES, KEY_ID + " = ?", new String[] { String.valueOf(cafe.getId()) });
+        db.close();
+    }
+
 }
